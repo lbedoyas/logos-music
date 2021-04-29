@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Storage } from '@ionic/storage';
+import { Storage } from '@ionic/storage-angular';
 
 @Component({
   selector: 'app-intro',
@@ -8,6 +8,8 @@ import { Storage } from '@ionic/storage';
   styleUrls: ['./intro.page.scss'],
 })
 export class IntroPage implements OnInit {
+
+  private _storage: Storage;
 
 
   slideOpts = {
@@ -40,10 +42,13 @@ export class IntroPage implements OnInit {
 
   constructor(private router: Router, private storage: Storage) { }
 
-  ngOnInit() {
+  async ngOnInit() {
+    const storageInit = await this.storage.create();
+    this._storage = storageInit;
   }
 
   finish(){
+    this._storage.set('isIntroShowed', true);
     this.router.navigateByUrl("/home");
   }
 
