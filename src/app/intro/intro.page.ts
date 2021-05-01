@@ -49,7 +49,7 @@ export class IntroPage implements OnInit {
 
   finish(){
     this._storage.set('isIntroShowed', true);
-    this.router.navigateByUrl("/home");
+    this.router.navigateByUrl("/menu/home");
   }
 
 }
