@@ -10,6 +10,7 @@ import * as dataArtists from '../../assets/JSON/artist.json';
 export class PlatziMusicService {
 
   private urlNewRelease = 'https://platzi-music-api.herokuapp.com/browse/new-releases';
+  private urlArtistsTopTracks = 'https://platzi-music-api.herokuapp.com';
 
   constructor(private httpClient: HttpClient) { }
 
@@ -25,6 +26,10 @@ export class PlatziMusicService {
 
   getArtists(){
     return dataArtists.items;
+  }
+
+  getArtistTopTracks(artistID): Observable<any>{
+    return this.httpClient.get<any>(this.urlArtistsTopTracks + '/artists/' + artistID + '/top-tracks?country=CO').pipe(catchError(err => of(err)));
   }
 
 

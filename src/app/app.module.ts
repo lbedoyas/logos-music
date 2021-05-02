@@ -9,6 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 import { IonicStorageModule } from '@ionic/storage-angular';
 import { HttpClientModule } from '@angular/common/http';
+import { SongsModalPageModule } from './songs-modal/songs-modal.module';
 
 
 
@@ -19,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
         IonicModule.forRoot(),
         AppRoutingModule,
         HttpClientModule,
+        SongsModalPageModule,
         IonicStorageModule.forRoot()],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
